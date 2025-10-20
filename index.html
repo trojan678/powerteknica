@@ -1,0 +1,1160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PowerTeknica - Harnessing The Sun</title>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>⚡</text></svg>">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            overflow-x: hidden;
+            background: #0a1628;
+            position: relative;
+            color: #e0e0e0;
+        }
+
+            body::before {
+                content: '';
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                background: radial-gradient(circle at 20% 30%, rgba(255, 255, 255, 0.15) 0%, transparent 50%), radial-gradient(circle at 80% 20%, rgba(0, 188, 212, 0.15) 0%, transparent 50%), linear-gradient(135deg, rgba(135, 206, 235, 0.4), rgba(179, 229, 252, 0.2));
+                z-index: 0;
+                animation: subtleFloat 20s ease-in-out infinite;
+            }
+
+        @keyframes subtleFloat {
+            0%, 100% {
+                opacity: 1;
+                transform: scale(1);
+            }
+
+            50% {
+                opacity: 0.8;
+                transform: scale(1.1);
+            }
+        }
+
+        header, section, footer {
+            position: relative;
+            z-index: 1;
+        }
+
+        header {
+            background: rgba(0, 123, 255, 0.2);
+            backdrop-filter: blur(15px);
+            padding: 1.5rem 5%;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .logo {
+            font-size: 2rem;
+            font-weight: bold;
+            background: linear-gradient(45deg, #76ff03, #00bcd4);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+            .nav-links a {
+                color: white;
+                text-decoration: none;
+                transition: all 0.3s;
+                font-weight: 500;
+            }
+
+                .nav-links a:hover {
+                    color: #76ff03;
+                    transform: translateY(-2px);
+                }
+
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 8rem 5% 4rem;
+            position: relative;
+            background: linear-gradient(rgba(10, 22, 40, 0.65), rgba(10, 22, 40, 0.8)), url('images/Roof_panels.jpg') center/cover no-repeat;
+            background-attachment: fixed;
+        }
+
+        .hero-content h1 {
+            font-size: 4rem;
+            color: #6eb1d4;
+            margin-bottom: 1rem;
+        }
+
+        .hero-content p {
+            font-size: 1.5rem;
+            color: #2de615;
+            margin-bottom: 2rem;
+        }
+
+        .cta-button {
+            background: linear-gradient(45deg, #00bcd4, #52dead);
+            color: white;
+            padding: 1rem 3rem;
+            border: none;
+            border-radius: 50px;
+            font-size: 1.2rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+            .cta-button:hover {
+                transform: translateY(-3px) scale(1.05);
+                box-shadow: 0 8px 30px rgba(0, 123, 255, 0.4);
+            }
+
+        section {
+            padding: 5rem 5%;
+            text-align: center;
+        }
+
+            section h2 {
+                color: #f0f2f5;
+                font-size: 2.5rem;
+                margin-bottom: 1rem;
+            }
+
+            section p {
+                color: #e0e0e0;
+                margin-bottom: 2rem;
+                font-size: 1.1rem;
+                max-width: 800px;
+                margin-left: auto;
+                margin-right: auto;
+            }
+
+        /* Projects Section */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            justify-content: center;
+            align-items: stretch;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .project-card {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 15px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+            padding: 2rem;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(8px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+            .project-card:hover {
+                transform: translateY(-5px);
+                box-shadow: 0 10px 30px rgba(0, 123, 255, 0.3);
+                border-color: rgba(118, 255, 3, 0.3);
+            }
+
+        .project-image {
+            width: 100%;
+            height: 220px;
+            border-radius: 12px;
+            overflow: hidden;
+            margin-bottom: 1rem;
+            background: rgba(255, 255, 255, 0.05);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+            .project-image img {
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+                display: block;
+                transition: transform 0.4s ease;
+            }
+
+        .project-card:hover .project-image img {
+            transform: scale(1.05);
+        }
+
+        .project-image.fallback {
+            font-size: 3rem;
+            color: #76ff03;
+            background: rgba(0, 188, 212, 0.15);
+            border: 1px dashed rgba(255, 255, 255, 0.2);
+        }
+
+        .detail-badge {
+            background: linear-gradient(45deg, rgba(118, 255, 3, 0.15), rgba(0, 188, 212, 0.15));
+            color: #76ff03;
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            border: 1px solid rgba(118, 255, 3, 0.2);
+            margin: 0.2rem;
+            display: inline-block;
+        }
+
+        /* Calculator Section */
+        .calculator-section {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 15px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+            padding: 3rem;
+            margin: 2rem auto;
+            max-width: 1200px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+            .calculator-section h2 {
+                color: #f0f2f5;
+                font-size: 2.5rem;
+                margin-bottom: 1rem;
+            }
+
+            .calculator-section p {
+                color: #e0e0e0;
+                margin-bottom: 2rem;
+            }
+
+        .input-group {
+            max-width: 600px;
+            margin: 0 auto 3rem;
+            background: rgba(255, 255, 255, 0.05);
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+            .input-group label {
+                display: block;
+                margin-bottom: 0.5rem;
+                color: #76ff03;
+                font-weight: 600;
+                font-size: 1.1rem;
+            }
+
+            .input-group input {
+                width: 100%;
+                padding: 1rem;
+                font-size: 1.2rem;
+                background: rgba(255, 255, 255, 0.1);
+                border: 2px solid rgba(255, 255, 255, 0.2);
+                border-radius: 10px;
+                transition: all 0.3s;
+                color: white;
+            }
+
+                .input-group input:focus {
+                    outline: none;
+                    border-color: #76ff03;
+                    box-shadow: 0 0 10px rgba(118, 255, 3, 0.3);
+                }
+
+        .packages {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .package {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
+            transition: all 0.4s;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            position: relative;
+            overflow: hidden;
+        }
+
+            .package::before {
+                content: '';
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 5px;
+                background: linear-gradient(90deg, rgba(118, 255, 3, 0.6), rgba(0, 188, 212, 0.6));
+            }
+
+            .package:hover {
+                transform: translateY(-10px);
+                box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
+                border-color: rgba(118, 255, 3, 0.3);
+            }
+
+            .package.featured {
+                border-color: rgba(118, 255, 3, 0.5);
+                transform: scale(1.05);
+            }
+
+            .package h3 {
+                font-size: 2rem;
+                color: #f0f2f5;
+                margin-bottom: 1rem;
+            }
+
+            .package .price {
+                font-size: 2.5rem;
+                font-weight: bold;
+                color: #00bcd4;
+                margin: 1rem 0;
+            }
+
+            .package .savings {
+                color: #76ff03;
+                font-weight: bold;
+                font-size: 1.1rem;
+                margin-bottom: 1rem;
+            }
+
+            .package ul {
+                list-style: none;
+                margin: 1.5rem 0;
+            }
+
+                .package ul li {
+                    padding: 0.5rem 0;
+                    color: #e0e0e0;
+                    position: relative;
+                    padding-left: 1.5rem;
+                }
+
+                    .package ul li::before {
+                        content: '✓';
+                        position: absolute;
+                        left: 0;
+                        color: #76ff03;
+                        font-weight: bold;
+                    }
+
+        .select-package {
+            width: 100%;
+            padding: 1rem;
+            background: linear-gradient(45deg, #1e3c72, #00bcd4);
+            color: white;
+            border: none;
+            border-radius: 10px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+            .select-package:hover {
+                transform: scale(1.05);
+                box-shadow: 0 5px 20px rgba(0, 188, 212, 0.4);
+            }
+
+        /* Features Section */
+        .features {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 15px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+            padding: 3rem;
+            margin: 2rem auto;
+            max-width: 1200px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+            .features h2 {
+                color: #f0f2f5;
+                font-size: 2.5rem;
+                margin-bottom: 1rem;
+            }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .feature-card {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 2rem;
+            border-radius: 15px;
+            transition: all 0.3s;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+            .feature-card:hover {
+                transform: translateY(-10px);
+                box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
+                border-color: rgba(118, 255, 3, 0.3);
+            }
+
+            .feature-card h3 {
+                color: #f0f2f5;
+                margin: 1rem 0;
+                font-size: 1.5rem;
+            }
+
+            .feature-card p {
+                color: #e0e0e0;
+            }
+
+        .icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        /* Company History Section */
+        .history-section {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 15px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+            padding: 3rem;
+            margin: 2rem auto;
+            max-width: 1200px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+            .history-section h2 {
+                color: #f0f2f5;
+                font-size: 2.5rem;
+                margin-bottom: 1rem;
+            }
+
+            .history-section p {
+                color: #e0e0e0;
+                margin-bottom: 2rem;
+                font-size: 1.1rem;
+                line-height: 1.7;
+                max-width: 900px;
+                margin-left: auto;
+                margin-right: auto;
+            }
+
+        .history-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: center;
+            margin-top: 3rem;
+        }
+
+        .history-text {
+            text-align: left;
+        }
+
+            .history-text h3 {
+                color: #f0f2f5;
+                font-size: 1.8rem;
+                margin-bottom: 1.5rem;
+            }
+
+            .history-text p {
+                text-align: left;
+                margin-bottom: 1.5rem;
+            }
+
+        .history-stats {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .stat-item {
+            background: linear-gradient(135deg, rgba(118, 255, 3, 0.1), rgba(0, 188, 212, 0.1));
+            padding: 1.5rem;
+            border-radius: 15px;
+            text-align: center;
+            border: 1px solid rgba(118, 255, 3, 0.2);
+        }
+
+            .stat-item .stat-number {
+                font-size: 2.5rem;
+                font-weight: bold;
+                color: #00bcd4;
+                margin-bottom: 0.5rem;
+            }
+
+            .stat-item .stat-label {
+                color: #f0f2f5;
+                font-weight: 600;
+                font-size: 1rem;
+            }
+
+        .history-images {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5rem;
+            height: 100%;
+        }
+
+        .history-image {
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            height: 300px;
+            position: relative;
+        }
+
+            .history-image img {
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+                transition: transform 0.5s ease;
+            }
+
+            .history-image:hover img {
+                transform: scale(1.05);
+            }
+
+        .image-caption {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(transparent, rgba(0, 0, 0, 0.7));
+            color: white;
+            padding: 1rem;
+            text-align: center;
+            font-size: 0.9rem;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .history-image:hover .image-caption {
+            opacity: 1;
+        }
+
+        /* Modal Styles */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.7);
+            z-index: 2000;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .modal-content {
+            background: rgba(30, 60, 114, 0.95);
+            padding: 2rem;
+            border-radius: 15px;
+            width: 90%;
+            max-width: 500px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+            border: 1px solid rgba(118, 255, 3, 0.3);
+        }
+
+        .modal h3 {
+            color: #76ff03;
+            margin-bottom: 1.5rem;
+            font-size: 1.8rem;
+            text-align: center;
+        }
+
+        .modal label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: #e0e0e0;
+            font-weight: 500;
+        }
+
+        .modal input {
+            width: 100%;
+            padding: 0.8rem;
+            margin-bottom: 1.5rem;
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 8px;
+            color: white;
+            font-size: 1rem;
+        }
+
+            .modal input:focus {
+                outline: none;
+                border-color: #76ff03;
+                box-shadow: 0 0 8px rgba(118, 255, 3, 0.3);
+            }
+
+        .modal-buttons {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1.5rem;
+        }
+
+        .modal-button {
+            flex: 1;
+            padding: 0.8rem;
+            border: none;
+            border-radius: 8px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .submit-button {
+            background: linear-gradient(45deg, #76ff03, #00bcd4);
+            color: white;
+        }
+
+        .cancel-button {
+            background: rgba(255, 255, 255, 0.1);
+            color: #e0e0e0;
+        }
+
+        .modal-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+        }
+
+        @media (max-width: 768px) {
+            .history-content {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .history-images {
+                grid-template-columns: 1fr;
+                gap: 1rem;
+            }
+
+            .history-image {
+                height: 250px;
+            }
+
+            .history-stats {
+                grid-template-columns: 1fr;
+            }
+
+            .modal-buttons {
+                flex-direction: column;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .history-image {
+                height: 200px;
+            }
+        }
+
+        /* Partners Section */
+        .partners-section {
+            padding: 3rem 5%;
+            background: rgba(255, 255, 255, 0.05);
+            text-align: center;
+            border-top: 1px solid rgba(118, 255, 3, 0.2);
+            border-bottom: 1px solid rgba(118, 255, 3, 0.2);
+            margin-top: 5rem;
+        }
+
+            .partners-section h2 {
+                font-size: 2rem;
+                color: #76ff03;
+                margin-bottom: 0.5rem;
+                letter-spacing: 1px;
+            }
+
+            .partners-section p {
+                color: #e0e0e0;
+                margin-bottom: 2rem;
+                font-size: 1rem;
+            }
+
+        .partners-grid {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 2.5rem;
+            align-items: center;
+        }
+
+        .partner-logo img {
+            height: 60px;
+            width: auto;
+            filter: grayscale(100%) brightness(0.9);
+            opacity: 0.8;
+            transition: all 0.4s ease;
+        }
+
+            .partner-logo img:hover {
+                filter: grayscale(0%) brightness(1);
+                opacity: 1;
+                transform: scale(1.05);
+            }
+
+        footer {
+            background: rgba(10, 22, 40, 0.95);
+            backdrop-filter: blur(20px);
+            color: white;
+            text-align: center;
+            padding: 3rem 5%;
+            margin-top: 4rem;
+            border-top: 2px solid rgba(118, 255, 3, 0.2);
+        }
+
+            footer p {
+                margin: 0.5rem 0;
+                color: #e0e0e0;
+            }
+
+            footer strong {
+                color: #76ff03;
+                font-size: 1.2rem;
+            }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="logo">⚡ PowerTeknica</div>
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#calculator">Calculator</a></li>
+                <li><a href="#features">Features</a></li>
+                <li><a href="#history">Our Story</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section class="hero" id="home">
+        <div class="hero-content">
+            <h1>Power Your Future with Solar</h1>
+            <p>Clean, Renewable Energy Solutions for Your Home</p>
+            <button class="cta-button" onclick="document.getElementById('projects').scrollIntoView({behavior: 'smooth'})">
+                View Our Projects
+            </button>
+        </div>
+    </section>
+
+    <section class="projects-section" id="projects">
+        <h2>Our Successful Projects</h2>
+        <p>Powering Kenya's future, one installation at a time</p>
+
+        <div class="projects-grid">
+            <!-- Camellia Gardens -->
+            <div class="project-card">
+                <div class="project-image">
+                    <img src="images/projects/camellia.jpg" alt="Camellia Gardens Solar Installation" onerror="this.style.display='none'; this.parentElement.classList.add('fallback'); this.parentElement.innerHTML='🏡';">
+                </div>
+                <div class="project-content">
+                    <h3>Camellia Gardens</h3>
+                    <p>A Commercial solar installation providing 48kW of power, reducing electricity bills by 90% for this one of a kind hotel in the green in Ngorongo.</p>
+                    <div class="project-details">
+                        <span class="detail-badge">Commercial</span>
+                        <span class="detail-badge">Solar Installation</span>
+                        <span class="detail-badge">48kW System</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Mipe Redhill Farm -->
+            <div class="project-card">
+                <div class="project-image">
+                    <img src="images/projects/MIPE.jpg" alt="Mipe Redhill Farm" onerror="this.src='data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 width=%22300%22 height=%22200%22><rect width=%22300%22 height=%22200%22 fill=%22%23b3e5fc%22/><text x=%22150%22 y=%22100%22 fill=%22%23004d80%22 font-size=%2220%22 text-anchor=%22middle%22 dy=%22.3em%22>Image Missing</text></svg>';">
+                </div>
+                <h3>Mipe Redhill Farm</h3>
+                <p>Solar solution powering irrigation systems and farm operations with an 8kW off-grid installation.</p>
+                <div>
+                    <span class="detail-badge">Agricultural</span>
+                    <span class="detail-badge">8kW System</span>
+                </div>
+            </div>
+
+            <!-- Millmatt Farm -->
+            <div class="project-card">
+                <div class="project-image fallback">🏭</div>
+                <div class="project-content">
+                    <h3>Millmatt Farm</h3>
+                    <p>Large-scale 25kW solar power installation supporting dairy & poultry operations and reducing operational costs by 60%.</p>
+                    <div class="project-details">
+                        <span class="detail-badge">Commercial</span>
+                        <span class="detail-badge">Large Scale</span>
+                        <span class="detail-badge">25kW System</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Happy Valley Aqua -->
+            <div class="project-card">
+                <div class="project-image">
+                    <img src="images/projects/water.jpg" alt="Happy Valley Aqua" onerror="this.src='data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 width=%22300%22 height=%22200%22><rect width=%22300%22 height=%22200%22 fill=%22%23b3e5fc%22/><text x=%22150%22 y=%22100%22 fill=%22%23004d80%22 font-size=%2220%22 text-anchor=%22middle%22 dy=%22.3em%22>Image Missing</text></svg>';">
+                </div>
+                <div class="project-content">
+                    <h3>Happy Valley Aqua</h3>
+                    <p>Solar-powered Water bottling facility in Molo with a 24kW system ensuring continuous water circulation and filtration.</p>
+                    <div class="project-details">
+                        <span class="detail-badge">Aquaculture</span>
+                        <span class="detail-badge">Renewable Energy</span>
+                        <span class="detail-badge">24kW System</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="calculator-section" id="calculator">
+        <h2>Solar Savings Calculator</h2>
+        <p>Enter your monthly electricity bill to see how much you can save</p>
+
+        <div class="input-group">
+            <label for="monthlyBill">Monthly Electricity Bill (KSh)</label>
+            <input type="number" id="monthlyBill" placeholder="Enter your monthly bill" min="0" step="0.01">
+        </div>
+
+        <div class="packages" id="packagesContainer">
+            <div class="package">
+                <h3>🌱 Basic</h3>
+                <div class="price">KSh --</div>
+                <div class="savings">Save KSh -- yearly</div>
+                <ul>
+                    <li>5kW Solar System</li>
+                    <li>15-20 Solar Panels</li>
+                    <li>25 Year Warranty</li>
+                    <li>Basic Monitoring</li>
+                    <li>Professional Installation</li>
+                </ul>
+                <button class="select-package" onclick="showCustomerForm('Basic')">Select Basic</button>
+            </div>
+
+            <div class="package featured">
+                <h3>⭐ Premium</h3>
+                <div class="price">KSh --</div>
+                <div class="savings">Save KSh -- yearly</div>
+                <ul>
+                    <li>10kW Solar System</li>
+                    <li>30-35 Solar Panels</li>
+                    <li>25 Year Warranty</li>
+                    <li>Advanced Monitoring</li>
+                    <li>Battery Storage (5kWh)</li>
+                    <li>Smart Energy Management</li>
+                </ul>
+                <button class="select-package" onclick="showCustomerForm('Premium')">Select Premium</button>
+            </div>
+
+            <div class="package">
+                <h3>💎 Elite</h3>
+                <div class="price">KSh --</div>
+                <div class="savings">Save KSh -- yearly</div>
+                <ul>
+                    <li>15kW Solar System</li>
+                    <li>45-50 Solar Panels</li>
+                    <li>30 Year Warranty</li>
+                    <li>Premium Monitoring</li>
+                    <li>Battery Storage (10kWh)</li>
+                    <li>AI Energy Optimization</li>
+                    <li>Priority Support</li>
+                </ul>
+                <button class="select-package" onclick="showCustomerForm('Elite')">Select Elite</button>
+            </div>
+        </div>
+    </section>
+
+    <section class="features" id="features">
+        <h2>Why Choose PowerTeknica?</h2>
+        <div class="features-grid">
+            <div class="feature-card">
+                <div class="icon">🌞</div>
+                <h3>Premium Panels</h3>
+                <p>High-efficiency solar panels with industry-leading warranties</p>
+            </div>
+            <div class="feature-card">
+                <div class="icon">💰</div>
+                <h3>Save Money</h3>
+                <p>Reduce your electricity bills by up to 90%</p>
+            </div>
+            <div class="feature-card">
+                <div class="icon">🌍</div>
+                <h3>Eco-Friendly</h3>
+                <p>Reduce your carbon footprint and help save the planet</p>
+            </div>
+            <div class="feature-card">
+                <div class="icon">⚡</div>
+                <h3>Energy Independence</h3>
+                <p>Generate your own clean power</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Company History Section -->
+    <section class="history-section" id="history">
+        <h2>Our Story: 6 Years of Solar Excellence</h2>
+        <p>Powering Kenya with sustainable energy solutions since 2019</p>
+
+        <div class="history-content">
+            <div class="history-text">
+                <h3>Pioneering Solar Solutions in Kenya</h3>
+                <p>Founded in 2019, PowerTeknica has been at the forefront of Kenya's renewable energy revolution. What started as a small team with a big vision has grown into one of the most trusted solar installation companies in the region.</p>
+
+                <p>Over the past 6 years, we've installed over 50 solar systems across residential, commercial, and agricultural sectors, helping our clients reduce their electricity costs by up to 90% while significantly lowering their carbon footprint.</p>
+
+                <p>Our journey began with a simple mission: to make clean, affordable solar energy accessible to every Kenyan household and business. Today, we're proud to have empowered thousands of Kenyans with energy independence while contributing to a greener, more sustainable future for our country.</p>
+
+                <div class="history-stats">
+                    <div class="stat-item">
+                        <div class="stat-number">5+</div>
+                        <div class="stat-label">Years Experience</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">50+</div>
+                        <div class="stat-label">Projects Completed</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">90%</div>
+                        <div class="stat-label">Average Savings</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">25</div>
+                        <div class="stat-label">Year Warranty</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="history-images">
+                <div class="history-image">
+                    <img src="images/team.jpg" alt="PowerTeknica Team Installing Solar Panels" onerror="this.src='data:image/svg+xml;charset=UTF-8,<svg xmlns=%22http://www.w3.org/2000/svg%22 width=%22400%22 height=%22300%22 viewBox=%220 0 400 300%22><rect fill=%22%231e3c72%22 width=%22400%22 height=%22300%22/><text fill=%22%2376ff03%22 font-family=%22sans-serif%22 font-size=%2220%22 x=%22200%22 y=%22150%22 text-anchor=%22middle%22>Team Installation</text></svg>';">
+                    <div class="image-caption">Our team installing solar panels at a commercial site</div>
+                </div>
+                <div class="history-image">
+                    <img src="images/project.jpg" alt="PowerTeknica Team Planning Session" onerror="this.src='data:image/svg+xml;charset=UTF-8,<svg xmlns=%22http://www.w3.org/2000/svg%22 width=%22400%22 height=%22300%22 viewBox=%220 0 400 300%22><rect fill=%22%2300bcd4%22 width=%22400%22 height=%22300%22/><text fill=%22%23ffffff%22 font-family=%22sans-serif%22 font-size=%2220%22 x=%22200%22 y=%22150%22 text-anchor=%22middle%22>Team Planning</text></svg>';">
+                    <div class="image-caption">Our engineering team planning a custom solar solution</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="partners-section">
+        <h2>Our Proud Partners</h2>
+        <p>Working with industry-leading brands to deliver excellence</p>
+
+        <div class="partners-grid">
+            <div class="partner-logo">
+                <img src="images/partners/tbbnova.jpg" alt="TBB Nova" style="max-width: 100%; height: 80px; object-fit: contain;">
+                <div class="partner-name">TBB Nova</div>
+            </div>
+
+            <div class="partner-logo">
+                <img src="images/partners/chloride.png" alt="CHLORIDE" style="max-width: 100%; height: 80px; object-fit: contain;">
+                <div class="partner-name">Chloride Exide Solar</div>
+            </div>
+
+            <div class="partner-logo">
+                <img src="images/partners/ecodesh.jpg" alt="ECODESH" style="max-width: 100%; height: 80px; object-fit: contain;">
+                <div class="partner-name">Ecodesh</div>
+            </div>
+
+            <div class="partner-logo">
+                <img src="images/partners/jinko.jpg" alt="JINKO" style="max-width: 100%; height: 80px; object-fit: contain;">
+                <div class="partner-name">Jinko Solar</div>
+            </div>
+        </div>
+    </section>
+
+    <footer id="contact">
+        <p>&copy; 2025 PowerTeknica. All rights reserved.</p>
+        <p><strong>Contact Sales For More Info&Enquiries</strong></p>
+        <p>📞 0722991300 | ✉️ ngatia.ndirangu@powerteknica.com</p>
+    </footer>
+
+
+    <!-- Customer Information Modal -->
+    <div id="customerModal" class="modal">
+        <div class="modal-content">
+            <h3>Contact Information</h3>
+            <form id="customerForm">
+                <input type="hidden" id="selectedPackage" name="package">
+                <div>
+                    <label for="customerName">Full Name</label>
+                    <input type="text" id="customerName" name="name" required placeholder="Enter your full name">
+                </div>
+                <div>
+                    <label for="customerEmail">Email Address</label>
+                    <input type="email" id="customerEmail" name="email" required placeholder="Enter your email">
+                </div>
+                <div>
+                    <label for="customerPhone">Phone Number</label>
+                    <input type="tel" id="customerPhone" name="phone" required placeholder="Enter your phone number">
+                </div>
+                <div>
+                    <label for="customerLocation">Location</label>
+                    <input type="text" id="customerLocation" name="location" required placeholder="Enter your location">
+                </div>
+                <div class="modal-buttons">
+                    <button type="button" class="modal-button cancel-button" onclick="closeModal()">Cancel</button>
+                    <button type="submit" class="modal-button submit-button">Submit Request</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        const billInput = document.getElementById('monthlyBill');
+        const customerModal = document.getElementById('customerModal');
+        const customerForm = document.getElementById('customerForm');
+        const selectedPackageInput = document.getElementById('selectedPackage');
+
+        billInput.addEventListener('input', calculatePackages);
+
+        function calculatePackages() {
+            const monthlyBill = parseFloat(billInput.value) || 0;
+
+            if (monthlyBill === 0) {
+                resetPackages();
+                return;
+            }
+
+            const annualBill = monthlyBill * 12;
+
+            // Package calculations
+            const basicSystem = {
+                cost: Math.round(monthlyBill * 45),
+                savings: Math.round(annualBill * 0.65),
+                reduction: 65
+            };
+
+            const premiumSystem = {
+                cost: Math.round(monthlyBill * 75),
+                savings: Math.round(annualBill * 0.80),
+                reduction: 80
+            };
+
+            const eliteSystem = {
+                cost: Math.round(monthlyBill * 110),
+                savings: Math.round(annualBill * 0.90),
+                reduction: 90
+            };
+
+            updatePackageDisplay(0, basicSystem);
+            updatePackageDisplay(1, premiumSystem);
+            updatePackageDisplay(2, eliteSystem);
+        }
+
+        function updatePackageDisplay(index, system) {
+            const packages = document.querySelectorAll('.package');
+            const priceEl = packages[index].querySelector('.price');
+            const savingsEl = packages[index].querySelector('.savings');
+
+            priceEl.textContent = `KSh ${system.cost.toLocaleString()}`;
+            savingsEl.textContent = `Save KSh ${system.savings.toLocaleString()} yearly`;
+        }
+
+        function resetPackages() {
+            const prices = document.querySelectorAll('.price');
+            const savings = document.querySelectorAll('.savings');
+
+            prices.forEach(p => p.textContent = 'KSh --');
+            savings.forEach(s => s.textContent = 'Save KSh -- yearly');
+        }
+
+        function showCustomerForm(packageName) {
+            const monthlyBill = parseFloat(billInput.value) || 0;
+
+            if (monthlyBill === 0) {
+                alert('Please enter your monthly electricity bill first!');
+                billInput.focus();
+                return;
+            }
+
+            selectedPackageInput.value = packageName;
+            customerModal.style.display = 'flex';
+        }
+
+        function closeModal() {
+            customerModal.style.display = 'none';
+            customerForm.reset();
+        }
+
+        // Handle form submission
+        customerForm.addEventListener('submit', function (e) {
+            e.preventDefault();
+
+            const formData = new FormData(this);
+            const packageName = selectedPackageInput.value;
+            const monthlyBill = parseFloat(billInput.value) || 0;
+
+            // Get form values
+            const name = document.getElementById('customerName').value;
+            const email = document.getElementById('customerEmail').value;
+            const phone = document.getElementById('customerPhone').value;
+            const location = document.getElementById('customerLocation').value;
+
+            // Send email using Formspree (free service)
+            const formDataToSend = new FormData();
+            formDataToSend.append('name', name);
+            formDataToSend.append('email', email);
+            formDataToSend.append('phone', phone);
+            formDataToSend.append('location', location);
+            formDataToSend.append('package', packageName);
+            formDataToSend.append('monthlyBill', monthlyBill);
+            formDataToSend.append('_subject', `New Solar Package Request - ${packageName}`);
+            formDataToSend.append('_replyto', email);
+
+            // Using Formspree to handle email sending
+            fetch('https://formspree.io/f/mwprzdaq', {
+                method: 'POST',
+                body: formDataToSend,
+                headers: {
+                    'Accept': 'application/json'
+                }
+            })
+                .then(response => {
+                    if (response.ok) {
+                        alert(`Thank you ${name}! Your request for the ${packageName} package has been submitted. We will contact you shortly.`);
+                        closeModal();
+                    } else {
+                        alert('There was an error submitting your request. Please try again or contact us directly.');
+                    }
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                    alert('There was an error submitting your request. Please try again or contact us directly.');
+                });
+        });
+
+        // Close modal when clicking outside
+        window.addEventListener('click', function (event) {
+            if (event.target === customerModal) {
+                closeModal();
+            }
+        });
+    </script>
+</body>
+</html>
