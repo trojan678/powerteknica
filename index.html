@@ -210,60 +210,110 @@
         /* Projects Section */
         .projects-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            grid-template-columns: repeat(3, 1fr);
             gap: 2rem;
-            justify-content: center;
-            align-items: stretch;
+            justify-items: center;
+            align-items: start;
             max-width: 1200px;
             margin: 0 auto;
         }
 
+        @media (max-width: 900px) {
+            .projects-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 600px) {
+            .projects-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .image-slider {
+            position: relative;
+            width: 100%;
+            height: 180px;
+            border-radius: 12px;
+            overflow: hidden;
+        }
+
+            .image-slider img {
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+                opacity: 0;
+                transition: opacity 1s ease-in-out;
+            }
+
+                .image-slider img.active {
+                    opacity: 1;
+                }
+
+
         .project-card {
-            background: rgba(255, 255, 255, 0.1);
+            background: rgba(255, 255, 255, 0.08);
             border-radius: 15px;
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
-            padding: 2rem;
+            box-shadow: 0 2px 15px rgba(0, 0, 0, 0.3);
+            padding: 1.2rem;
             transition: all 0.3s ease;
-            backdrop-filter: blur(8px);
+            backdrop-filter: blur(6px);
             border: 1px solid rgba(255, 255, 255, 0.1);
         }
 
             .project-card:hover {
-                transform: translateY(-5px);
-                box-shadow: 0 10px 30px rgba(0, 123, 255, 0.3);
-                border-color: rgba(118, 255, 3, 0.3);
+                transform: translateY(-6px);
+                box-shadow: 0 8px 25px rgba(0, 188, 212, 0.3);
+                border-color: rgba(118, 255, 3, 0.4);
             }
 
         .project-image {
             width: 100%;
-            height: 220px;
+            height: 160px;
             border-radius: 12px;
             overflow: hidden;
             margin-bottom: 1rem;
-            background: rgba(255, 255, 255, 0.05);
-            display: flex;
-            justify-content: center;
-            align-items: center;
         }
 
             .project-image img {
                 width: 100%;
                 height: 100%;
                 object-fit: cover;
-                display: block;
                 transition: transform 0.4s ease;
             }
 
+
         .project-card:hover .project-image img {
-            transform: scale(1.05);
+            transform: scale(1.08);
         }
 
+        .project-content h3 {
+            color: #76ff03;
+            margin-bottom: 0.5rem;
+        }
+
+        .project-content p {
+            color: #e0e0e0;
+            font-size: 0.95rem;
+            margin-bottom: 0.8rem;
+        }
+
+        /* Fallback styling for missing images */
         .project-image.fallback {
             font-size: 3rem;
-            color: #76ff03;
-            background: rgba(0, 188, 212, 0.15);
-            border: 1px dashed rgba(255, 255, 255, 0.2);
+            color: #32CD32;
+            background: rgba(50, 205, 50, 0.1);
+            border: 2px dashed rgba(50, 205, 50, 0.3);
         }
+
+            .project-image.fallback::before {
+                content: '🏗️';
+                font-size: 2rem;
+                margin-right: 10px;
+            }
 
         .detail-badge {
             background: linear-gradient(45deg, rgba(118, 255, 3, 0.15), rgba(0, 188, 212, 0.15));
@@ -862,7 +912,13 @@
             <!-- Camellia Gardens -->
             <div class="project-card">
                 <div class="project-image">
-                    <img src="images/projects/camellia.jpg" alt="Camellia Gardens Solar Installation" onerror="this.style.display='none'; this.parentElement.classList.add('fallback'); this.parentElement.innerHTML='🏡';">
+                    <div class="image-slider">
+                        <img src="images/projects/camellia.jpg" alt="Camellia Gardens 1">
+                        <img src="images/projects/roof.jpg" alt="Ample roof space">
+                        <img src="images/projects/battery.jpg" alt="BAttery capacity">
+                        <img src="images/projects/fullr.jpg" alt="Roof space utilized">
+                        <img src="images/projects/invert.jpg" alt="inverters">
+                    </div>
                 </div>
                 <div class="project-content">
                     <h3>Camellia Gardens</h3>
@@ -878,19 +934,36 @@
             <!-- Mipe Redhill Farm -->
             <div class="project-card">
                 <div class="project-image">
-                    <img src="images/projects/MIPE.jpg" alt="Mipe Redhill Farm" onerror="this.src='data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 width=%22300%22 height=%22200%22><rect width=%22300%22 height=%22200%22 fill=%22%23b3e5fc%22/><text x=%22150%22 y=%22100%22 fill=%22%23004d80%22 font-size=%2220%22 text-anchor=%22middle%22 dy=%22.3em%22>Image Missing</text></svg>';">
+                    <div class="image-slider">
+                        <img src="images/projects/MIPE.jpg" alt="Mipe Redhill Farm 1">
+                  
+                    </div>
                 </div>
-                <h3>Mipe Redhill Farm</h3>
-                <p>Solar solution powering irrigation systems and farm operations with an 8kW off-grid installation.</p>
-                <div>
-                    <span class="detail-badge">Agricultural</span>
-                    <span class="detail-badge">8kW System</span>
+                <div class="project-content">
+                    <h3>Mipe Redhill Farm</h3>
+                    <p>
+                        Solar solution powering irrigation systems and farm operations
+                        with an 8kW off-grid installation.
+                    </p>
+                    <div class="project-details">
+                        <span class="detail-badge">Agricultural</span>
+                        <span class="detail-badge">Solar Installation</span>
+                        <span class="detail-badge">8kW System</span>
+                    </div>
                 </div>
             </div>
 
+
             <!-- Millmatt Farm -->
             <div class="project-card">
-                <div class="project-image fallback">🏭</div>
+                <div class="image-slider">
+                    <img src="images/projects/mil1.jpg" >
+                    <img src="images/projects/mil2.jpg" >
+                    <img src="images/projects/mil3.jpg" >
+                    <img src="images/projects/mil4.jpg" >
+                    <img src="images/projects/mil5.jpg" >
+                    <img src="images/projects/mil6.jpg" >
+                </div>
                 <div class="project-content">
                     <h3>Millmatt Farm</h3>
                     <p>Large-scale 25kW solar power installation supporting dairy & poultry operations and reducing operational costs by 60%.</p>
@@ -904,8 +977,12 @@
 
             <!-- Happy Valley Aqua -->
             <div class="project-card">
-                <div class="project-image">
-                    <img src="images/projects/water.jpg" alt="Happy Valley Aqua" onerror="this.src='data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 width=%22300%22 height=%22200%22><rect width=%22300%22 height=%22200%22 fill=%22%23b3e5fc%22/><text x=%22150%22 y=%22100%22 fill=%22%23004d80%22 font-size=%2220%22 text-anchor=%22middle%22 dy=%22.3em%22>Image Missing</text></svg>';">
+                <div class="image-slider">
+                    <img src="images/projects/slo.jpg">
+                    <img src="images/projects/water.jpg">
+                    <img src="images/projects/fact.jpg">
+                    <img src="images/projects/tem.jpg">
+                    <img src="images/projects/inv.jpg">
                 </div>
                 <div class="project-content">
                     <h3>Happy Valley Aqua</h3>
@@ -917,6 +994,47 @@
                     </div>
                 </div>
             </div>
+
+
+            <div class="project-card">
+                <div class="image-slider">
+                    <img src="images/projects/Mol.jpg">
+                   
+                   
+                    
+                    <img src="images/projects/invert.jpg" alt="inverters">
+                </div>
+                <div class="project-content">
+                    <h3>Molars Dental Practices </h3>
+                    <p>35kW solar system for a commercial office building in the heart of the CBD, reducing grid dependency by 85%.</p>
+                    <div class="project-details">
+                        <span class="detail-badge">Commercial</span>
+                        <span class="detail-badge">35kW System</span>
+                        <span class="detail-badge">Urban</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="project-card">
+                <div class="image-slider">
+                    <img src="images/projects/res1.jpg" >
+                    <img src="images/projects/res2.jpg" >
+                    <img src="images/projects/res3.jpg">
+                    <img src="images/projects/res4.jpg" >
+                    
+                </div>
+                <div class="project-content">
+                    <h3>Karen Residence</h3>
+                    <p>12kW residential solar installation with battery backup for a family home in Karen.</p>
+                    <div class="project-details">
+                        <span class="detail-badge">Residential</span>
+                        <span class="detail-badge">12kW System</span>
+                        <span class="detail-badge">Battery Backup</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </div>
         </div>
     </section>
 
@@ -1116,6 +1234,40 @@
     </div>
 
     <script>
+
+        // Image error handling function
+        function handleImageError(img) {
+            const parent = img.parentElement;
+            img.style.display = 'none';
+            parent.classList.add('fallback');
+
+            // Set appropriate fallback icon based on project type
+            const projectTitle = parent.closest('.project-card').querySelector('h3').textContent;
+            let fallbackIcon = '⚡'; // Default icon
+
+            if (projectTitle.includes('Farm') || projectTitle.includes('Agricultural')) {
+                fallbackIcon = '🌱';
+            } else if (projectTitle.includes('Aqua') || projectTitle.includes('Water')) {
+                fallbackIcon = '💧';
+            } else if (projectTitle.includes('Commercial') || projectTitle.includes('Office')) {
+                fallbackIcon = '🏢';
+            } else if (projectTitle.includes('Residence') || projectTitle.includes('Home')) {
+                fallbackIcon = '🏠';
+            }
+
+            parent.innerHTML = `<div class="fallback-content">${fallbackIcon}<br><span>Project Image</span></div>`;
+        }
+
+        // Initialize images on load
+        document.addEventListener('DOMContentLoaded', function () {
+            // Preload images or add loading states if needed
+            const images = document.querySelectorAll('.project-image img');
+            images.forEach(img => {
+                img.addEventListener('error', function () {
+                    handleImageError(this);
+                });
+            });
+        });
         const billInput = document.getElementById('monthlyBill');
         const customerModal = document.getElementById('customerModal');
         const customerForm = document.getElementById('customerForm');
@@ -1244,6 +1396,24 @@
             if (event.target === customerModal) {
                 closeModal();
             }
+        });
+        document.addEventListener('DOMContentLoaded', () => {
+            const sliders = document.querySelectorAll('.image-slider');
+
+            sliders.forEach(slider => {
+                const images = slider.querySelectorAll('img');
+                let index = 0;
+
+                // Show the first image
+                images[index].classList.add('active');
+
+                // Automatically cycle through images
+                setInterval(() => {
+                    images[index].classList.remove('active');
+                    index = (index + 1) % images.length;
+                    images[index].classList.add('active');
+                }, 3000); // 3 seconds per image
+            });
         });
     </script>
 </body>
