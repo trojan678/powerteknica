@@ -52,8 +52,9 @@
             z-index: 1;
         }
 
+        /* HEADER BASE */
         header {
-            background: rgb(21, 19, 19, 0.60);
+            background: rgba(21, 19, 19, 0.6);
             backdrop-filter: blur(20px);
             -webkit-backdrop-filter: blur(20px);
             padding: 1.5rem 5%;
@@ -65,85 +66,81 @@
             border-bottom: 1px solid rgba(50, 205, 50, 0.3);
         }
 
-        nav {
+        /* FLEX CONTAINER */
+        .header-container {
             display: flex;
-            justify-content: space-between;
             align-items: center;
+            justify-content: space-between;
             max-width: 1400px;
             margin: 0 auto;
         }
 
-
-
+        /* LOGO */
         .logo {
             display: flex;
             align-items: center;
-            gap: 15px;
-            font-size: 2.2rem;
-            font-weight: bold;
-            color: #32CD32;
+            cursor: pointer;
+            transition: all 0.3s ease;
         }
 
         .logo-img {
-            height: 60px;
+            height: 120px;
             width: auto;
-            max-width: 200px;
-            filter: none;
+            max-width: 250px;
+            object-fit: contain;
+            transition: all 0.3s ease;
+        }
+
+        /* ✨ Hover glow effect */
+        .logo:hover .logo-img {
+            transform: scale(1.08);
+            filter: drop-shadow(0 0 12px rgba(118, 255, 3, 0.8));
+        }
+
+        /* NAVBAR */
+        nav {
+            display: flex;
+            align-items: center;
         }
 
         .nav-links {
             display: flex;
             gap: 2rem;
             list-style: none;
+            margin: 0;
+            padding: 0;
         }
 
             .nav-links a {
-                color: white !important;
+                color: white;
                 text-decoration: none;
-                transition: all 0.3s;
+                transition: all 0.3s ease;
                 font-weight: 500;
                 padding: 0.5rem 1rem;
                 border-radius: 8px;
             }
 
                 .nav-links a:hover {
-                    color: #32CD32 !important;
+                    color: #32CD32;
                     background: rgba(50, 205, 50, 0.1);
                     transform: translateY(-2px);
                 }
 
-            display: flex;
-            align-items: center;
-            gap: 15px;
-            font-size: 2.2rem;
-            font-weight: bold;
-            color: #000000;
-        }
-
-        .logo-img {
-            height: 60px;
-            width: auto;
-            max-width: 200px;
-            filter: none;
-        }
-
-        .nav-links {
-            display: flex;
-            gap: 2rem;
-            list-style: none;
-        }
-
-            .nav-links a {
-                color: #000000;
-                text-decoration: none;
-                transition: all 0.3s;
-                font-weight: 500;
+        /* RESPONSIVE */
+        @media (max-width: 768px) {
+            .logo-img {
+                height: 65px;
             }
 
-                .nav-links a:hover {
-                    color: #32CD32;
-                    transform: translateY(-2px);
+            .nav-links {
+                gap: 1rem;
+            }
+
+                .nav-links a {
+                    font-size: 0.9rem;
                 }
+        }
+
 
         .hero {
             min-height: 100vh;
@@ -877,20 +874,24 @@
 </head>
 <body>
     <header>
-        <nav>
+        <div class="header-container">
+            <!-- Logo on the left -->
             <div class="logo">
-                <img src="images/newlogo.png" class="logo-img">
-            
+                <img src="images/newlogo.png" alt="Logo" class="logo-img">
             </div>
-            <ul class="nav-links">
-                <li><a href="#home">Home</a></li>
-                <li><a href="#projects">Projects</a></li>
-                <li><a href="#calculator">Calculator</a></li>
-                <li><a href="#features">Features</a></li>
-                <li><a href="#history">About Us</a></li>
-                <li><a href="#contact">Contact</a></li>
-            </ul>
-        </nav>
+
+            <!-- Navbar on the right -->
+            <nav>
+                <ul class="nav-links">
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#projects">Projects</a></li>
+                    <li><a href="#calculator">Calculator</a></li>
+                    <li><a href="#features">Features</a></li>
+                    <li><a href="#history">About Us</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
     </header>
 
     <section class="hero" id="home">
@@ -1123,17 +1124,17 @@
     <!-- Company History Section -->
     <section class="history-section" id="history">
        
-            <h2>Our Story: 6 Years of Solar Excellence</h2>
-            <p>Powering Kenya with sustainable energy solutions since 2019</p>
+            <h2>About Us: 9 Years of Solar Excellence</h2>
+            <p>Powering Kenya with sustainable energy solutions since 2016</p>
 
             <div class="history-content">
                 <div class="history-text">
                     <h3>Pioneering Solar Solutions in Kenya</h3>
-                    <p>Founded in 2019, PowerTeknica has been at the forefront of Kenya's renewable energy revolution. What started as a small team with a big vision has grown into one of the most trusted solar installation companies in the region.</p>
+                    <p>PowerTeknica Ltd is Specialized Power System Provider that was incorporated in 2016 with a mission to offer sustainable power systems solutions to clients from an installed capacity of 1.5kVA to 2000kVA.</p>
 
-                    <p>Over the past 6 years, we've installed over 50 solar systems across residential, commercial, and agricultural sectors, helping our clients reduce their electricity costs by up to 90% while significantly lowering their carbon footprint.</p>
+                    <p> Our client customer base comprises Domestic Installations, SMEs in various Fields as well as Financial Institutions and Real Estate Developers. We also undertake Solar Powered Water Projects.</p>
 
-                    <p>Our journey began with a simple mission: to make clean, affordable solar energy accessible to every Kenyan household and business. Today, we're proud to have empowered thousands of Kenyans with energy independence while contributing to a greener, more sustainable future for our country.</p>
+                    <p>We source most of our equipment directly from manufacturers in China as well as locally from such suppliers such as Chloride Exide and Ramco Group for smaller projects that require short installation lead times.</p>
 
                     <div class="history-stats">
                         <div class="stat-item">
