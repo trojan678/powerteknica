@@ -495,6 +495,8 @@
             margin: 2rem auto;
             max-width: 1200px;
             border: 1px solid rgba(255, 255, 255, 0.1);
+            position: relative;
+            overflow: hidden;
         }
 
             .history-section h2 {
@@ -512,6 +514,35 @@
                 margin-left: auto;
                 margin-right: auto;
             }
+            /* Adaptive Watermark Logo */
+            .history-section::before {
+                content: '';
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                width: 40%;
+                height: 60%;
+                max-width: 450px;
+                max-height: 450px;
+                background: url('images/newlogo.png') center/contain no-repeat;
+                opacity: 0.08;
+                z-index: 0;
+                pointer-events: none;
+            }
+
+            /* Ensure content appears above watermark */
+            .history-section > * {
+                position: relative;
+                z-index: 1;
+            }
+
+        .history-title-wrapper {
+            position: relative;
+            margin-bottom: 3rem;
+        }
+
+            
 
         .history-content {
             display: grid;
@@ -715,6 +746,11 @@
 
             .modal-buttons {
                 flex-direction: column;
+            }
+            .history-section::before {
+                width: 60%;
+                height: 40%;
+                opacity: 0.05;
             }
         }
 
@@ -969,49 +1005,50 @@
 
     <!-- Company History Section -->
     <section class="history-section" id="history">
-        <h2>Our Story: 6 Years of Solar Excellence</h2>
-        <p>Powering Kenya with sustainable energy solutions since 2019</p>
+       
+            <h2>Our Story: 6 Years of Solar Excellence</h2>
+            <p>Powering Kenya with sustainable energy solutions since 2019</p>
 
-        <div class="history-content">
-            <div class="history-text">
-                <h3>Pioneering Solar Solutions in Kenya</h3>
-                <p>Founded in 2019, PowerTeknica has been at the forefront of Kenya's renewable energy revolution. What started as a small team with a big vision has grown into one of the most trusted solar installation companies in the region.</p>
+            <div class="history-content">
+                <div class="history-text">
+                    <h3>Pioneering Solar Solutions in Kenya</h3>
+                    <p>Founded in 2019, PowerTeknica has been at the forefront of Kenya's renewable energy revolution. What started as a small team with a big vision has grown into one of the most trusted solar installation companies in the region.</p>
 
-                <p>Over the past 6 years, we've installed over 50 solar systems across residential, commercial, and agricultural sectors, helping our clients reduce their electricity costs by up to 90% while significantly lowering their carbon footprint.</p>
+                    <p>Over the past 6 years, we've installed over 50 solar systems across residential, commercial, and agricultural sectors, helping our clients reduce their electricity costs by up to 90% while significantly lowering their carbon footprint.</p>
 
-                <p>Our journey began with a simple mission: to make clean, affordable solar energy accessible to every Kenyan household and business. Today, we're proud to have empowered thousands of Kenyans with energy independence while contributing to a greener, more sustainable future for our country.</p>
+                    <p>Our journey began with a simple mission: to make clean, affordable solar energy accessible to every Kenyan household and business. Today, we're proud to have empowered thousands of Kenyans with energy independence while contributing to a greener, more sustainable future for our country.</p>
 
-                <div class="history-stats">
-                    <div class="stat-item">
-                        <div class="stat-number">5+</div>
-                        <div class="stat-label">Years Experience</div>
+                    <div class="history-stats">
+                        <div class="stat-item">
+                            <div class="stat-number">5+</div>
+                            <div class="stat-label">Years Experience</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-number">50+</div>
+                            <div class="stat-label">Projects Completed</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-number">90%</div>
+                            <div class="stat-label">Average Savings</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-number">25</div>
+                            <div class="stat-label">Year Warranty</div>
+                        </div>
                     </div>
-                    <div class="stat-item">
-                        <div class="stat-number">50+</div>
-                        <div class="stat-label">Projects Completed</div>
+                </div>
+
+                <div class="history-images">
+                    <div class="history-image">
+                        <img src="images/team.jpg" alt="PowerTeknica Team Installing Solar Panels" onerror="this.src='data:image/svg+xml;charset=UTF-8,<svg xmlns=%22http://www.w3.org/2000/svg%22 width=%22400%22 height=%22300%22 viewBox=%220 0 400 300%22><rect fill=%22%231e3c72%22 width=%22400%22 height=%22300%22/><text fill=%22%2376ff03%22 font-family=%22sans-serif%22 font-size=%2220%22 x=%22200%22 y=%22150%22 text-anchor=%22middle%22>Team Installation</text></svg>';">
+                        <div class="image-caption">Our team installing solar panels at a commercial site</div>
                     </div>
-                    <div class="stat-item">
-                        <div class="stat-number">90%</div>
-                        <div class="stat-label">Average Savings</div>
-                    </div>
-                    <div class="stat-item">
-                        <div class="stat-number">25</div>
-                        <div class="stat-label">Year Warranty</div>
+                    <div class="history-image">
+                        <img src="images/project.jpg" alt="PowerTeknica Team Planning Session" onerror="this.src='data:image/svg+xml;charset=UTF-8,<svg xmlns=%22http://www.w3.org/2000/svg%22 width=%22400%22 height=%22300%22 viewBox=%220 0 400 300%22><rect fill=%22%2300bcd4%22 width=%22400%22 height=%22300%22/><text fill=%22%23ffffff%22 font-family=%22sans-serif%22 font-size=%2220%22 x=%22200%22 y=%22150%22 text-anchor=%22middle%22>Team Planning</text></svg>';">
+                        <div class="image-caption">Our engineering team planning a custom solar solution</div>
                     </div>
                 </div>
             </div>
-
-            <div class="history-images">
-                <div class="history-image">
-                    <img src="images/team.jpg" alt="PowerTeknica Team Installing Solar Panels" onerror="this.src='data:image/svg+xml;charset=UTF-8,<svg xmlns=%22http://www.w3.org/2000/svg%22 width=%22400%22 height=%22300%22 viewBox=%220 0 400 300%22><rect fill=%22%231e3c72%22 width=%22400%22 height=%22300%22/><text fill=%22%2376ff03%22 font-family=%22sans-serif%22 font-size=%2220%22 x=%22200%22 y=%22150%22 text-anchor=%22middle%22>Team Installation</text></svg>';">
-                    <div class="image-caption">Our team installing solar panels at a commercial site</div>
-                </div>
-                <div class="history-image">
-                    <img src="images/project.jpg" alt="PowerTeknica Team Planning Session" onerror="this.src='data:image/svg+xml;charset=UTF-8,<svg xmlns=%22http://www.w3.org/2000/svg%22 width=%22400%22 height=%22300%22 viewBox=%220 0 400 300%22><rect fill=%22%2300bcd4%22 width=%22400%22 height=%22300%22/><text fill=%22%23ffffff%22 font-family=%22sans-serif%22 font-size=%2220%22 x=%22200%22 y=%22150%22 text-anchor=%22middle%22>Team Planning</text></svg>';">
-                    <div class="image-caption">Our engineering team planning a custom solar solution</div>
-                </div>
-            </div>
-        </div>
     </section>
 
     <section class="partners-section">
