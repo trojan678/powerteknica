@@ -84,7 +84,7 @@
         }
 
         .logo-img {
-            height: 120px;
+            height: 90px;
             width: auto;
             max-width: 250px;
             object-fit: contain;
@@ -144,26 +144,90 @@
 
         .hero {
             min-height: 100vh;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .slideshow {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+
+        .slide {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0;
+            transition: opacity 1s ease-in-out;
             display: flex;
             align-items: center;
             justify-content: center;
             text-align: center;
-            padding: 8rem 5% 4rem;
+            padding: 0 5%;
+        }
+
+            .slide.active {
+                opacity: 1;
+            }
+
+        /* Slide 1 - Power Your Future */
+        .slide-1 {
+            background: linear-gradient(rgba(10, 22, 40, 0.7), rgba(10, 22, 40, 0.8)), url('https://images.unsplash.com/photo-1509391366360-2e959784a276?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80') center/cover no-repeat;
+        }
+
+        /* Slide 2 - Company Logo */
+        .slide-2 {
+            background: linear-gradient(rgba(10, 22, 40, 0.7), rgba(10, 22, 40, 0.8)), url('images/team.jpg') center/cover no-repeat;
+        }
+
+        /* Slide 3 - Roof Panels */
+        .slide-3 {
+            background: linear-gradient(rgba(10, 22, 40, 0.7), rgba(10, 22, 40, 0.8)), url('images/Roof_Panels.jpg') center/cover no-repeat;
+        }
+
+        /* Slide 4 - Another Image */
+        .slide-4 {
+            background: linear-gradient(rgba(10, 22, 40, 0.7), rgba(10, 22, 40, 0.8)), url('https://images.unsplash.com/photo-1466611653911-95081537e5b7?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80') center/cover no-repeat;
+        }
+
+        .slide-content {
+            max-width: 800px;
+            color: white;
+            z-index: 2;
             position: relative;
-            background: linear-gradient(rgba(10, 22, 40, 0.65), rgba(10, 22, 40, 0.8)), url('./images/Roof_Panels.jpg') center/cover no-repeat;
-            background-attachment: fixed;
         }
 
-        .hero-content h1 {
-            font-size: 4rem;
-            color: #6eb1d4;
-            margin-bottom: 1rem;
+            .slide-content h1 {
+                font-size: 4rem;
+                margin-bottom: 1.5rem;
+                text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.7);
+                opacity: 0;
+                transform: translateY(30px);
+                transition: all 0.8s ease;
+            }
+
+        .slide.active .slide-content h1 {
+            opacity: 1;
+            transform: translateY(0);
         }
 
-        .hero-content p {
+        .slide-content p {
             font-size: 1.5rem;
-            color: #2de615;
             margin-bottom: 2rem;
+            text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.7);
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease 0.3s;
+        }
+
+        .slide.active .slide-content p {
+            opacity: 1;
+            transform: translateY(0);
         }
 
         .cta-button {
@@ -176,34 +240,176 @@
             font-weight: bold;
             cursor: pointer;
             transition: all 0.3s;
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease 0.6s;
         }
 
-            .cta-button:hover {
-                transform: translateY(-3px) scale(1.05);
-                box-shadow: 0 8px 30px rgba(0, 123, 255, 0.4);
+        .slide.active .cta-button {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px) scale(1.05);
+            box-shadow: 0 8px 30px rgba(0, 123, 255, 0.4);
+        }
+
+        /* Company Logo Styling */
+        .company-logo {
+            max-width: 400px;
+            width: 80%;
+            height: auto;
+            opacity: 0;
+            transform: scale(0.8);
+            transition: all 0.8s ease;
+            filter: drop-shadow(0 0 15px rgba(118, 255, 3, 0.7));
+        }
+
+        .slide.active .company-logo {
+            opacity: 1;
+            transform: scale(1);
+        }
+
+        /* Slide Navigation */
+        .slide-nav {
+            position: absolute;
+            bottom: 30px;
+            left: 0;
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            z-index: 10;
+        }
+
+        .slide-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.5);
+            margin: 0 8px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+            .slide-dot.active {
+                background: #76ff03;
+                transform: scale(1.2);
             }
 
-        section {
-            padding: 5rem 5%;
-            text-align: center;
+            .slide-dot:hover {
+                background: #76ff03;
+            }
+
+        /* Slide Arrows */
+        .slide-arrow {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(255, 255, 255, 0.2);
+            color: white;
+            border: none;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            font-size: 1.5rem;
+            cursor: pointer;
+            z-index: 10;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
 
-            section h2 {
+            .slide-arrow:hover {
+                background: rgba(118, 255, 3, 0.7);
+            }
+
+        .prev {
+            left: 20px;
+        }
+
+        .next {
+            right: 20px;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .slide-content h1 {
+                font-size: 2.5rem;
+            }
+
+            .slide-content p {
+                font-size: 1.2rem;
+            }
+
+            .company-logo {
+                max-width: 300px;
+            }
+
+            .slide-arrow {
+                width: 40px;
+                height: 40px;
+                font-size: 1.2rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .slide-content h1 {
+                font-size: 2rem;
+            }
+
+            .slide-content p {
+                font-size: 1rem;
+            }
+
+            .company-logo {
+                max-width: 250px;
+            }
+
+            .slide-arrow {
+                width: 35px;
+                height: 35px;
+                font-size: 1rem;
+            }
+        }
+
+        /* Projects Section */
+        .projects-section {
+            padding: 5rem 5%;
+            text-align: center;
+            background: rgba(0, 0, 0, 0.6);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            position: relative;
+        }
+            .projects-section::before {
+                content: '';
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                background: radial-gradient(circle at 20% 30%, rgba(50, 205, 50, 0.15) 0%, transparent 50%), radial-gradient(circle at 80% 20%, rgba(50, 205, 50, 0.1) 0%, transparent 50%), linear-gradient(135deg, rgba(50, 205, 50, 0.05), rgba(50, 205, 50, 0.02));
+                z-index: -1;
+                pointer-events: none;
+            }
+
+            .projects-section h2 {
                 color: #f0f2f5;
                 font-size: 2.5rem;
                 margin-bottom: 1rem;
             }
 
-            section p {
+            .projects-section p {
                 color: #e0e0e0;
-                margin-bottom: 2rem;
+                margin-bottom: 3rem;
                 font-size: 1.1rem;
                 max-width: 800px;
                 margin-left: auto;
                 margin-right: auto;
             }
 
-        /* Projects Section */
         .projects-grid {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
@@ -212,6 +418,8 @@
             align-items: start;
             max-width: 1200px;
             margin: 0 auto;
+            position: relative;
+            z-index: 1;
         }
 
         @media (max-width: 900px) {
@@ -569,9 +777,9 @@
                 transform: translate(-50%, -50%);
                 width: 40%;
                 height: 60%;
-                max-width: 450px;
-                max-height: 450px;
-                background: url('images/newlogo.png') center/contain no-repeat;
+                max-width: 1000px;
+                max-height: 1140px;
+                background: url('images/logo3.png') center/contain no-repeat;
                 opacity: 0.08;
                 z-index: 0;
                 pointer-events: none;
@@ -588,7 +796,7 @@
             margin-bottom: 3rem;
         }
 
-            
+
 
         .history-content {
             display: grid;
@@ -793,6 +1001,7 @@
             .modal-buttons {
                 flex-direction: column;
             }
+
             .history-section::before {
                 width: 60%;
                 height: 40%;
@@ -877,7 +1086,7 @@
         <div class="header-container">
             <!-- Logo on the left -->
             <div class="logo">
-                <img src="images/newlogo.png" alt="Logo" class="logo-img">
+                <img src="images/biglogo.png" alt="Logo" class="logo-img">
             </div>
 
             <!-- Navbar on the right -->
@@ -895,12 +1104,58 @@
     </header>
 
     <section class="hero" id="home">
-        <div class="hero-content">
-            <h1>Power Your Future with Solar</h1>
-            <p>Clean, Renewable Energy Solutions for Your Home</p>
-            <button class="cta-button" onclick="document.getElementById('projects').scrollIntoView({behavior: 'smooth'})">
-                View Our Projects
-            </button>
+        <div class="slideshow">
+            <!-- Slide 1: Power Your Future -->
+            <div class="slide slide-1 active">
+                <div class="slide-content">
+                    <h1>Power Your Future with Solar</h1>
+                    <p>Clean, Renewable Energy Solutions for Your Home</p>
+                    <button class="cta-button" onclick="document.getElementById('projects').scrollIntoView({behavior: 'smooth'})">
+                        View Our Projects
+                    </button>
+                </div>
+            </div>
+
+            <!-- Slide 2: Company Logo -->
+            <div class="slide slide-2">
+                <div class="slide-content">
+                    <img src="images/biglogo.png" alt="PowerTeknica Logo" class="company-logo">
+                    <p>Leading Kenya's Solar Revolution Since 2016</p>
+                </div>
+            </div>
+
+            <!-- Slide 3: Roof Panels -->
+            <div class="slide slide-3">
+                <div class="slide-content">
+                    <h1>Professional Solar Installations</h1>
+                    <p>High-quality roof panel installations for maximum efficiency</p>
+                    <button class="cta-button" onclick="document.getElementById('calculator').scrollIntoView({behavior: 'smooth'})">
+                        Calculate Savings
+                    </button>
+                </div>
+            </div>
+
+            <!-- Slide 4: Another Image -->
+            <div class="slide slide-4">
+                <div class="slide-content">
+                    <h1>Eco-Friendly Energy Solutions</h1>
+                    <p>Reduce your carbon footprint with clean solar power</p>
+                    <button class="cta-button" onclick="document.getElementById('features').scrollIntoView({behavior: 'smooth'})">
+                        Learn More
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide Navigation -->
+        <button class="slide-arrow prev" onclick="changeSlide(-1)">❮</button>
+        <button class="slide-arrow next" onclick="changeSlide(1)">❯</button>
+
+        <div class="slide-nav">
+            <div class="slide-dot active" onclick="currentSlide(1)"></div>
+            <div class="slide-dot" onclick="currentSlide(2)"></div>
+            <div class="slide-dot" onclick="currentSlide(3)"></div>
+            <div class="slide-dot" onclick="currentSlide(4)"></div>
         </div>
     </section>
 
@@ -998,11 +1253,7 @@
 
             <div class="project-card">
                 <div class="image-slider">
-                    <img src="images/projects/Mol.jpg">
-                   
-                   
-                    
-                    <img src="images/projects/invert.jpg" alt="inverters">
+                    <img src="images/projects/Mol.jpg">S
                 </div>
                 <div class="project-content">
                     <h3>Molars Dental Practices </h3>
@@ -1033,9 +1284,9 @@
                     </div>
                 </div>
             </div>
-        </div>
-        </div>
-        </div>
+          </div>
+       
+       </div>
     </section>
 
     <section class="calculator-section" id="calculator">
@@ -1158,7 +1409,7 @@
 
                 <div class="history-images">
                     <div class="history-image">
-                        <img src="images/team.jpg" alt="PowerTeknica Team Installing Solar Panels" onerror="this.src='data:image/svg+xml;charset=UTF-8,<svg xmlns=%22http://www.w3.org/2000/svg%22 width=%22400%22 height=%22300%22 viewBox=%220 0 400 300%22><rect fill=%22%231e3c72%22 width=%22400%22 height=%22300%22/><text fill=%22%2376ff03%22 font-family=%22sans-serif%22 font-size=%2220%22 x=%22200%22 y=%22150%22 text-anchor=%22middle%22>Team Installation</text></svg>';">
+                        <img src="images/projects/tem.jpg" alt="PowerTeknica Team Installing Solar Panels" onerror="this.src='data:image/svg+xml;charset=UTF-8,<svg xmlns=%22http://www.w3.org/2000/svg%22 width=%22400%22 height=%22300%22 viewBox=%220 0 400 300%22><rect fill=%22%231e3c72%22 width=%22400%22 height=%22300%22/><text fill=%22%2376ff03%22 font-family=%22sans-serif%22 font-size=%2220%22 x=%22200%22 y=%22150%22 text-anchor=%22middle%22>Team Installation</text></svg>';">
                         <div class="image-caption">Our team installing solar panels at a commercial site</div>
                     </div>
                     <div class="history-image">
@@ -1235,7 +1486,61 @@
 
     <script>
 
-        // Image error handling function
+        let currentSlideIndex = 0;
+        const slides = document.querySelectorAll('.slide');
+        const dots = document.querySelectorAll('.slide-dot');
+        let slideInterval;
+
+        // Initialize slideshow
+        function initSlideshow() {
+            showSlide(currentSlideIndex);
+            slideInterval = setInterval(() => {
+                changeSlide(1);
+            }, 7000); // Change slide every 5 seconds
+        }
+
+        // Change slide by a given increment
+        function changeSlide(n) {
+            showSlide(currentSlideIndex + n);
+        }
+
+        // Show a specific slide
+        function currentSlide(n) {
+            showSlide(n - 1);
+        }
+
+        // Display the slide at the given index
+        function showSlide(n) {
+            // Reset all slides and dots
+            slides.forEach(slide => {
+                slide.classList.remove('active');
+            });
+            dots.forEach(dot => {
+                dot.classList.remove('active');
+            });
+
+            // Calculate the new slide index
+            if (n >= slides.length) {
+                currentSlideIndex = 0;
+            } else if (n < 0) {
+                currentSlideIndex = slides.length - 1;
+            } else {
+                currentSlideIndex = n;
+            }
+
+            // Show the new slide and update the active dot
+            slides[currentSlideIndex].classList.add('active');
+            dots[currentSlideIndex].classList.add('active');
+
+            // Reset the timer
+            clearInterval(slideInterval);
+            slideInterval = setInterval(() => {
+                changeSlide(1);
+            }, 5000);
+        }
+
+        // Initialize the slideshow when the page loads
+        document.addEventListener('DOMContentLoaded', initSlideshow);
         function handleImageError(img) {
             const parent = img.parentElement;
             img.style.display = 'none';
