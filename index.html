@@ -466,13 +466,85 @@
             transition: all 0.3s ease;
             backdrop-filter: blur(6px);
             border: 1px solid rgba(255, 255, 255, 0.1);
+            opacity: 0;
+            transform: translateX(-100px);
+            transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
         }
+            .project-card.scroll-in {
+                opacity: 1;
+                transform: translateX(0);
+            }
+
+            /* Slide OUT to left */
+            .project-card.scroll-out {
+                opacity: 0;
+                transform: translateX(-100px);
+            }
+
+            /* Slide OUT to right (when scrolling up past the section) */
+            .project-card.scroll-out-up {
+                opacity: 0;
+                transform: translateX(100px);
+            }
+
+
+            .project-card.visible {
+                opacity: 1;
+                transform: translateX(0);
+            }
+
+            /* Stagger animation delays for each row */
+            .project-card:nth-child(3n+1) {
+                transition-delay: 0.1s;
+            }
+
+            .project-card:nth-child(3n+2) {
+                transition-delay: 0.2s;
+            }
+
+            .project-card:nth-child(3n+3) {
+                transition-delay: 0.3s;
+            }
 
             .project-card:hover {
                 transform: translateY(-6px);
                 box-shadow: 0 8px 25px rgba(0, 188, 212, 0.3);
                 border-color: rgba(118, 255, 3, 0.4);
             }
+
+        @media (max-width: 900px) {
+            .project-card {
+                transform: translateX(-50px);
+            }
+
+                /* Adjust delays for 2-column layout */
+                .project-card:nth-child(2n+1) {
+                    transition-delay: 0.1s;
+                }
+
+                .project-card:nth-child(2n+2) {
+                    transition-delay: 0.2s;
+                }
+        }
+
+        @media (max-width: 600px) {
+            .project-card {
+                transform: translateX(-30px);
+            }
+
+                .project-card.scroll-out {
+                    transform: translateX(-30px);
+                }
+
+                .project-card.scroll-out-up {
+                    transform: translateX(30px);
+                }
+
+            /* Single column - all same delay */
+            .project-card {
+                transition-delay: 0.1s;
+            }
+        }
 
         .project-image {
             width: 100%;
@@ -1551,6 +1623,7 @@
                 <div class="project-image">
                     <div class="image-slider">
                         <img src="images/projects/MIPE.jpg" alt="Mipe Redhill Farm">
+                        <img src="images/projects/mipe2.png" alt="Mipe Redhill Farm">
                     </div>
                 </div>
                 <div class="project-content">
@@ -1568,7 +1641,6 @@
             <div class="project-card">
                 <div class="project-image">
                     <div class="image-slider">
-                        <img src="images/projects/mil1.jpg" alt="Millmatt Farm 1">
                         <img src="images/projects/mil2.jpg" alt="Millmatt Farm 2">
                         <img src="images/projects/mil3.jpg" alt="Millmatt Farm 3">
                         <img src="images/projects/mil4.jpg" alt="Millmatt Farm 4">
@@ -2010,6 +2082,130 @@
     </div>
 
     <script>
+
+        // Scroll animation for project cards
+        // Complete scroll in/out animation solution
+        class ProjectScrollAnimations {
+            constructor() {
+                this.cards = [];
+                this.lastScrollY = window.scrollY;
+                this.isScrollingDown = true;
+                this.init();
+            }
+
+            init() {
+                this.cacheElements();
+                this.createObserver();
+                this.bindEvents();
+            }
+
+            cacheElements() {
+                this.cards = document.querySelectorAll('.project-card');
+                this.projectsSection = document.querySelector('.projects-section');
+            }
+
+            createObserver() {
+                this.observer = new IntersectionObserver((entries) => {
+                    entries.forEach(entry => {
+                        this.handleCardVisibility(entry);
+                    });
+                }, {
+                    threshold: 0.1,
+                    rootMargin: '0px 0px -50px 0px'
+                });
+            }
+
+            handleCardVisibility(entry) {
+                const card = entry.target;
+
+                if (entry.isIntersecting) {
+                    // Card entering viewport
+                    this.animateCardIn(card);
+                } else {
+                    // Card leaving viewport
+                    this.animateCardOut(card, entry);
+                }
+            }
+
+            animateCardIn(card) {
+                card.classList.remove('scroll-out', 'scroll-out-up');
+                setTimeout(() => {
+                    card.classList.add('scroll-in');
+                }, 150);
+            }
+
+            animateCardOut(card, entry) {
+                card.classList.remove('scroll-in');
+
+                if (this.isScrollingDown) {
+                    // Scrolling down - card leaves bottom
+                    if (entry.boundingClientRect.top < 0) {
+                        card.classList.add('scroll-out');
+                    }
+                } else {
+                    // Scrolling up - card leaves top
+                    if (entry.boundingClientRect.bottom > window.innerHeight) {
+                        card.classList.add('scroll-out-up');
+                    }
+                }
+            }
+
+            bindEvents() {
+                // Observe all cards
+                this.cards.forEach(card => {
+                    this.observer.observe(card);
+                });
+
+                // Track scroll direction
+                window.addEventListener('scroll', () => {
+                    const currentScrollY = window.scrollY;
+                    this.isScrollingDown = currentScrollY > this.lastScrollY;
+                    this.lastScrollY = currentScrollY;
+                });
+
+                // Re-initialize on resize
+                window.addEventListener('resize', () => {
+                    setTimeout(() => this.recheckVisibility(), 100);
+                });
+            }
+
+            recheckVisibility() {
+                this.cards.forEach(card => {
+                    const rect = card.getBoundingClientRect();
+                    const isVisible = rect.top < window.innerHeight && rect.bottom > 0;
+
+                    if (isVisible) {
+                        this.animateCardIn(card);
+                    } else {
+                        this.animateCardOut(card, { boundingClientRect: rect });
+                    }
+                });
+            }
+        }
+
+        // Initialize when page loads
+        document.addEventListener('DOMContentLoaded', () => {
+            new ProjectScrollAnimations();
+
+            // Keep your existing image slider code
+            const sliders = document.querySelectorAll('.image-slider');
+            sliders.forEach(slider => {
+                const images = slider.querySelectorAll('img');
+                let index = 0;
+
+                if (images.length > 0) {
+                    images[index].classList.add('active');
+                }
+
+                if (images.length > 1) {
+                    setInterval(() => {
+                        images[index].classList.remove('active');
+                        index = (index + 1) % images.length;
+                        images[index].classList.add('active');
+                    }, 3000);
+                }
+            });
+        });
 
         let currentSlideIndex = 0;
         const slides = document.querySelectorAll('.slide');
