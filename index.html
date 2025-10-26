@@ -1253,6 +1253,110 @@
                 }
         }
 
+        /* Location Section */
+        .location-section {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 15px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+            padding: 4rem 3rem;
+            margin: 2rem auto;
+            max-width: 1200px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .location-content {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 3rem;
+            align-items: start;
+        }
+
+        .map-container {
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .location-info {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .info-card {
+            background: rgba(255, 255, 255, 0.08);
+            padding: 1.5rem;
+            border-radius: 12px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: flex-start;
+            gap: 1rem;
+        }
+
+            .info-card:hover {
+                transform: translateY(-5px);
+                border-color: rgba(118, 255, 3, 0.3);
+                box-shadow: 0 8px 25px rgba(0, 188, 212, 0.2);
+            }
+
+        .info-icon {
+            font-size: 1.8rem;
+            background: rgba(118, 255, 3, 0.1);
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        .info-content h3 {
+            color: #76ff03;
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .info-content p {
+            color: #e0e0e0;
+            line-height: 1.5;
+            margin: 0;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 900px) {
+            .location-content {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .map-container {
+                order: 2;
+            }
+
+            .location-info {
+                order: 1;
+            }
+        }
+
+        @media (max-width: 600px) {
+            .location-section {
+                padding: 3rem 1.5rem;
+            }
+
+            .info-card {
+                padding: 1rem;
+            }
+
+            .info-icon {
+                width: 40px;
+                height: 40px;
+                font-size: 1.5rem;
+            }
+        }
+
         /* Partners Section */
         .partners-section {
             padding: 3rem 5%;
@@ -1396,7 +1500,6 @@
             <div class="slide-dot" onclick="currentSlide(4)"></div>
         </div>
     </section>
-
     <section class="projects-section" id="projects">
         <h2>Our Successful Projects</h2>
         <p>Powering Kenya's future, one installation at a time</p>
@@ -1408,9 +1511,9 @@
                     <div class="image-slider">
                         <img src="images/projects/camellia.jpg" alt="Camellia Gardens 1">
                         <img src="images/projects/roof.jpg" alt="Ample roof space">
-                        <img src="images/projects/battery.jpg" alt="BAttery capacity">
+                        <img src="images/projects/battery.jpg" alt="Battery capacity">
                         <img src="images/projects/fullr.jpg" alt="Roof space utilized">
-                        <img src="images/projects/invert.jpg" alt="inverters">
+                        <img src="images/projects/invert.jpg" alt="Inverters">
                     </div>
                 </div>
                 <div class="project-content">
@@ -1424,20 +1527,35 @@
                 </div>
             </div>
 
+            <!-- Suncaf Sunscape -->
+            <div class="project-card">
+                <div class="project-image">
+                    <div class="image-slider">
+                        <img src="images/projects/suncaf1.png" alt="Suncaf Sunscape 1">
+                        <img src="images/projects/suncaf2.png" alt="Suncaf Sunscape 2">
+                    </div>
+                </div>
+                <div class="project-content">
+                    <h3>Suncaf Sunscape Residentials</h3>
+                    <p>2pcs of 120kVA Eastmann Inverters connected in Parallel.</p>
+                    <div class="project-details">
+                        <span class="detail-badge">Residential</span>
+                        <span class="detail-badge">120kW System</span>
+                        <span class="detail-badge">Battery Backup</span>
+                    </div>
+                </div>
+            </div>
+
             <!-- Mipe Redhill Farm -->
             <div class="project-card">
                 <div class="project-image">
                     <div class="image-slider">
-                        <img src="images/projects/MIPE.jpg" alt="Mipe Redhill Farm 1">
-
+                        <img src="images/projects/MIPE.jpg" alt="Mipe Redhill Farm">
                     </div>
                 </div>
                 <div class="project-content">
                     <h3>Mipe Redhill Farm</h3>
-                    <p>
-                        Solar solution powering irrigation systems and farm operations
-                        with an 8kW off-grid installation.
-                    </p>
+                    <p>Solar solution powering irrigation systems and farm operations with an 8kW off-grid installation.</p>
                     <div class="project-details">
                         <span class="detail-badge">Agricultural</span>
                         <span class="detail-badge">Solar Installation</span>
@@ -1446,16 +1564,17 @@
                 </div>
             </div>
 
-
             <!-- Millmatt Farm -->
             <div class="project-card">
-                <div class="image-slider">
-                    <img src="images/projects/mil1.jpg">
-                    <img src="images/projects/mil2.jpg">
-                    <img src="images/projects/mil3.jpg">
-                    <img src="images/projects/mil4.jpg">
-                    <img src="images/projects/mil5.jpg">
-                    <img src="images/projects/mil6.jpg">
+                <div class="project-image">
+                    <div class="image-slider">
+                        <img src="images/projects/mil1.jpg" alt="Millmatt Farm 1">
+                        <img src="images/projects/mil2.jpg" alt="Millmatt Farm 2">
+                        <img src="images/projects/mil3.jpg" alt="Millmatt Farm 3">
+                        <img src="images/projects/mil4.jpg" alt="Millmatt Farm 4">
+                        <img src="images/projects/mil5.jpg" alt="Millmatt Farm 5">
+                        <img src="images/projects/mil6.jpg" alt="Millmatt Farm 6">
+                    </div>
                 </div>
                 <div class="project-content">
                     <h3>Millmatt Farm</h3>
@@ -1470,12 +1589,14 @@
 
             <!-- Happy Valley Aqua -->
             <div class="project-card">
-                <div class="image-slider">
-                    <img src="images/projects/slo.jpg">
-                    <img src="images/projects/water.jpg">
-                    <img src="images/projects/fact.jpg">
-                    <img src="images/projects/tem.jpg">
-                    <img src="images/projects/inv.jpg">
+                <div class="project-image">
+                    <div class="image-slider">
+                        <img src="images/projects/slo.jpg" alt="Happy Valley Aqua 1">
+                        <img src="images/projects/water.jpg" alt="Happy Valley Aqua 2">
+                        <img src="images/projects/fact.jpg" alt="Happy Valley Aqua 3">
+                        <img src="images/projects/tem.jpg" alt="Happy Valley Aqua 4">
+                        <img src="images/projects/inv.jpg" alt="Happy Valley Aqua 5">
+                    </div>
                 </div>
                 <div class="project-content">
                     <h3>Happy Valley Aqua</h3>
@@ -1488,13 +1609,15 @@
                 </div>
             </div>
 
-
+            <!-- Molars Dental Practices -->
             <div class="project-card">
-                <div class="image-slider">
-                    <img src="images/projects/Mol.jpg">S
+                <div class="project-image">
+                    <div class="image-slider">
+                        <img src="images/projects/Mol.jpg" alt="Molars Dental Practices">
+                    </div>
                 </div>
                 <div class="project-content">
-                    <h3>Molars Dental Practices </h3>
+                    <h3>Molars Dental Practices</h3>
                     <p>35kW solar system for a commercial office building in the heart of the CBD, reducing grid dependency by 85%.</p>
                     <div class="project-details">
                         <span class="detail-badge">Commercial</span>
@@ -1503,27 +1626,6 @@
                     </div>
                 </div>
             </div>
-
-            <div class="project-card">
-                <div class="image-slider">
-                    <img src="images/projects/res1.jpg">
-                    <img src="images/projects/res2.jpg">
-                    <img src="images/projects/res3.jpg">
-                    <img src="images/projects/res4.jpg">
-
-                </div>
-                <div class="project-content">
-                    <h3>Karen Residence</h3>
-                    <p>12kW residential solar installation with battery backup for a family home in Karen.</p>
-                    <div class="project-details">
-                        <span class="detail-badge">Residential</span>
-                        <span class="detail-badge">12kW System</span>
-                        <span class="detail-badge">Battery Backup</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-
         </div>
     </section>
 
@@ -1780,6 +1882,62 @@
         <!-- Navigation Arrows -->
         <button class="executive-arrow prev" onclick="changeExecutive(-1)">❮</button>
         <button class="executive-arrow next" onclick="changeExecutive(1)">❯</button>
+    </section>
+
+    <!-- Location Section -->
+    <section class="location-section" id="location">
+        <div class="section-header">
+            <h2>Visit Our Office</h2>
+            <p>Come see us at our headquarters in Nairobi</p>
+        </div>
+
+        <div class="location-content">
+            <div class="map-container">
+                <!-- Google Maps Embed -->
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3988.8085999999996!2d36.775375!3d-1.218611!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x182f1738a2cbc5a7%3A0x1d5e5e5e5e5e5e5e!2sGate%201%20-%20SafariPark%20Close%2C%20Off%20USIU%20Road%2C%20Nairobi!5e0!3m2!1sen!2ske!4v1234567890"
+                        width="100%"
+                        height="450"
+                        style="border:0;"
+                        allowfullscreen=""
+                        loading="lazy"
+                        referrerpolicy="no-referrer-when-downgrade">
+                </iframe>
+            </div>
+
+            <div class="location-info">
+                <div class="info-card">
+                    <div class="info-icon">📍</div>
+                    <div class="info-content">
+                        <h3>Our Address</h3>
+                        <p>Gate 1 - SafariPark Close<br>Off USIU Road<br>Nairobi, Kenya</p>
+                    </div>
+                </div>
+
+                <div class="info-card">
+                    <div class="info-icon">🕒</div>
+                    <div class="info-content">
+                        <h3>Business Hours</h3>
+                        <p>Monday - Friday: 8:00 AM - 5:00 PM<br>Saturday: 9:00 AM - 1:00 PM<br>Sunday: Closed</p>
+                    </div>
+                </div>
+
+                <div class="info-card">
+                    <div class="info-icon">📞</div>
+                    <div class="info-content">
+                        <h3>Contact Info</h3>
+                        <p>Phone: 0722 991 300<br>Email: ngatia.ndirangu@powerteknica.com</p>
+                    </div>
+                </div>
+
+                <div class="info-card">
+                    <div class="info-icon">🚗</div>
+                    <div class="info-content">
+                        <h3>Parking</h3>
+                        <p>Ample parking available within the compound</p>
+                    </div>
+                </div>
+            </div>
+        </div>
     </section>
 
     <section class="partners-section">
