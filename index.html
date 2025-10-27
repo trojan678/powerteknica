@@ -1431,68 +1431,68 @@
 
         /* Partners Section */
         .partners-section {
-            padding: 3rem 5%;
-            background: rgba(255, 255, 255, 0.05);
+            padding: 1.5rem 5%;
+            background: rgba(10, 22, 40, 0.95); /* same as footer for seamless blend */
             text-align: center;
             border-top: 1px solid rgba(118, 255, 3, 0.2);
-            border-bottom: 1px solid rgba(118, 255, 3, 0.2);
-            margin-top: 5rem;
+            margin-top: 0; /* removes space before footer */
         }
 
             .partners-section h2 {
-                font-size: 2rem;
+                font-size: 1.5rem;
                 color: #76ff03;
-                margin-bottom: 0.5rem;
-                letter-spacing: 1px;
+                margin-bottom: 0.3rem;
+                letter-spacing: 0.5px;
             }
 
             .partners-section p {
-                color: #e0e0e0;
-                margin-bottom: 2rem;
-                font-size: 1rem;
+                color: #cfcfcf;
+                margin-bottom: 1.2rem;
+                font-size: 0.95rem;
             }
 
         .partners-grid {
             display: flex;
             flex-wrap: wrap;
             justify-content: center;
-            gap: 2.5rem;
+            gap: 1.5rem;
             align-items: center;
         }
 
         .partner-logo img {
-            height: 60px;
+            height: 45px;
             width: auto;
             filter: grayscale(100%) brightness(0.9);
             opacity: 0.8;
-            transition: all 0.4s ease;
+            transition: all 0.3s ease;
         }
 
             .partner-logo img:hover {
                 filter: grayscale(0%) brightness(1);
                 opacity: 1;
-                transform: scale(1.05);
+                transform: scale(1.03);
             }
 
+        /* Footer */
         footer {
             background: rgba(10, 22, 40, 0.95);
-            backdrop-filter: blur(20px);
             color: white;
             text-align: center;
-            padding: 3rem 5%;
-            margin-top: 4rem;
-            border-top: 2px solid rgba(118, 255, 3, 0.2);
+            padding: 0.6rem 5%;
+            border-top: none; /* remove double border look */
+            margin-top: 0;
         }
 
             footer p {
-                margin: 0.5rem 0;
-                color: #e0e0e0;
+                margin: 0.3rem 0;
+                color: #cfcfcf;
             }
 
             footer strong {
                 color: #76ff03;
-                font-size: 1.2rem;
+                font-size: 1.1rem;
             }
+
     </style>
 </head>
 <body>
